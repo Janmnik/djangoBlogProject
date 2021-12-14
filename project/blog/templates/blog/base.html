@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>Django blog</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+</head>
+<body>
+<header></header>
+<nav>
+    <ul>
+        <li><a href="#zaloguj">zaloguj</a></li>
+        <li><a href="#wyloguj">wyloguj</a></li>
+    </ul>
+</nav>
+<aside></aside>
+<main>
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+</main>
+
+
+<footer> Strona została zrobiona przez Jan Malec </footer>
+</body>
+
+
+</html>
