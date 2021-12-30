@@ -7,14 +7,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" >
 </head>
 <body>
-<header></header>
-<nav>
+<header>
+    <h1>Blog</h1>
+</header>
+<nav class="sticky">
     <ul>
         <li><a href="#zaloguj">zaloguj</a></li>
         <li><a href="#wyloguj">wyloguj</a></li>
     </ul>
 </nav>
-<aside></aside>
+<aside>
+    <ul>
+        <li><a href="#kategorie">kategorie</a></li>
+        <li><a href="#autorzy">autorzy</a></li>
+        <li><a href="{% url 'post_new' %}" >new post</a></li>
+    </ul>
+</aside>
 <main>
     <section>
         {% block content %}
