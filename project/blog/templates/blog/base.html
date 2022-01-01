@@ -12,6 +12,10 @@
 </header>
 <nav class="sticky">
     <ul>
+        <li><a href="/">Start</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'post_new' %}" >new post</a></li>
+        {% endif %}
         <li><a href="#zaloguj">zaloguj</a></li>
         <li><a href="#wyloguj">wyloguj</a></li>
     </ul>
@@ -20,7 +24,7 @@
     <ul>
         <li><a href="#kategorie">kategorie</a></li>
         <li><a href="#autorzy">autorzy</a></li>
-        <li><a href="{% url 'post_new' %}" >new post</a></li>
+        
     </ul>
 </aside>
 <main>

@@ -20,3 +20,13 @@ class Post(models.Model):
         
     def authorget(self):
         return self.author
+
+class Comments(models.Model):
+    post_id = models.ManyToManyField('Post')
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(
+            default=timezone.now)
+    
+    def authorget(self):
+        return self.author
