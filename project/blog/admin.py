@@ -3,5 +3,9 @@ from .models import Post, Comments
 
 
 admin.site.register(Post)
-admin.site.register(Comments)
+
+#@admin.register(Comments)
+ #   list_display = ('name', 'email', 'post', 'created', 'active')
+  #  list_filter = ('active', 'created', 'updated')
+   # search_fields = 
 # Register your models here.
