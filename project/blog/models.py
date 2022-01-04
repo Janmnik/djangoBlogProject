@@ -22,18 +22,16 @@ class Post(models.Model):
         return self.author
 
 class Comments(models.Model):
-    post_id = models.ManyToManyField('Post')
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    #email = models.EmailField()
+    email = models.EmailField()
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
-    updated_date =models.DateTimeField(auto_now = True)
+    updated_date = models.DateTimeField(auto_now = True)
     active = models.BooleanField( default = True)
     
     def authorget(self):
         return self.author
     
-   # class Meta:
-       # ordering = ('created',)
     def __str__(self):
-        return 'Komentarz dodany przez {} dla posta {}'.format(self.name, self.post)
+        return 'Komentarz dodany przez {} dla posta {}'.format(self.author, self.post)
