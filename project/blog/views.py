@@ -5,7 +5,7 @@ from .models import Post, Comments
 from .forms import PostForm, CommentForm
 
 def post_list(request):
-    posts = Post.objects.all()#.filter(id=1)
+    posts = Post.objects.order_by('-published_date')#.filter(id=1)
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, pk):
@@ -42,32 +42,22 @@ def post_edit(request, pk):
     return render(request, 'blog/post_edit.html', {'form': form})
 
 #lista ktywnych komentarzy dla danego posta
-#comments = post.comments.filter(active=True)
 
-#def comment_detail(request):
-#if request.method == 'POST':
-    #komentarz zostanie upublikowany
- #   comment_form = CommentForm(data=request.POST)
-  #  if comment_form.is_valid():
-        #Utworzenie obiektu comment
-   #     new_comment = comment_form.save(commit=False)
-        #Przypisanie komentarza do danego posta
-    #    new_comment.post = post
-        #zapisanie komentarza w abzie danych
-     #   new_comment.save()
-   #else:
-    #    comment_form = CommentForm()
-#return render(request, 'blog/post_detail.html', {'comments': comments, 'comments_form': comments_form})
-
-
-#def comment_list(request):
- #   comment = Coments.objects.filter(active = True)#all()#.filter(id=1)
-  #  return render(request, 'blog/comment_list.html', {'comments': comments})
-
-#def comment_detail(request, pk):
- #   comment = get_object_or_404(Commments, pk=pk)
-  #  Comments.objects.get(pk=pk)
-   # return render(request, 'blog/post_detail.html', {'comment':comment})
+def comment_detail(request):
+    comments = post.comments.filter(active=True)
+    if request.method == 'POST':
+        #komentarz zostanie upublikowany
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            #Utworzenie obiektu comment
+            new_comment = comment_form.save(commit=False)
+            #Przypisanie komentarza do danego posta
+            new_comment.post = post
+            #zapisanie komentarza w abzie danych
+            new_comment.save()
+        else:
+            comment_form = CommentForm()
+        return render(request, 'blog/post_detail.html', {'comments': comments, 'comments_form': comments_form})
 
 
 def add_comment_to_post(request, pk):

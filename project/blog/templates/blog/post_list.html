@@ -11,6 +11,12 @@
 <p>{{ post.text|linebreaksbr }}</p>
 <p>published: {{ post.published_date }} by {{ post.author }}</p>
 <p>{{ post.}}</p>
+
+
+<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
 {% endfor %}
+
+
+
 {% endblock %}
 

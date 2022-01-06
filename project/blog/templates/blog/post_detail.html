@@ -17,14 +17,27 @@
 
 <hr>
 {% for comment in post.comments.all %}
-    <div class="comment">
+    <div class="comment"><hr>
         <div class="date">{{ comment.created_date }}</div>
         <strong>{{ comment.author }}</strong>
         <p>{{ comment.text|linebreaks }}</p>
+        {{ comment.counter }}
     </div>
+    {{comment}}
 
 {% empty %}
     <p>Brak komentarzy :(</p>
 {% endfor %}
 
+{% if new_comments %}
+<h2>Twój komentarz został dodany.</h2>
+{% else %}
+<h2>Dodaj swój komentarz.</h2>
+<form action="." method="post">
+    {{ comment_form.as_p }}
+    {% csrf_token %}
+    <p><input type="submit"value="Dodaj komentarz"></p>
+</form>
+{% endif %}
+<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 {% endblock %}
