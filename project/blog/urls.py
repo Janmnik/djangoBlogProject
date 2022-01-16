@@ -7,7 +7,7 @@ urlpatterns = [
     path('post/new', views.post_new, name='post_new'),
     path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
     path('post/<int:pk>/comment/', views.add_comment_to_post, name='add_comment_to_post'),
-    #path('comment/<int:pk>/edit/', views.comment_edit, name='comment_edit'),
+    path('comment/<int:pk>/edit/', views.comment_edit, name='comment_edit'),
     #path('commnet/new', view.comment_new, name='comment_new'),
 
 ]

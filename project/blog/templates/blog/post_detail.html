@@ -24,19 +24,26 @@
         {{ comment.counter }}
     </div>
     {{comment}}
+    <a class="btn btn-default" href="{% url 'comment_edit' pk=comment.post.pk %}"><span class="glyphicon glyphicon-pencil"></span>edit comment</a>
+
 
 {% empty %}
     <p>Brak komentarzy :(</p>
 {% endfor %}
-
 {% if new_comments %}
 <h2>Twój komentarz został dodany.</h2>
 {% else %}
+
+
 <h2>Dodaj swój komentarz.</h2>
 <form action="." method="post">
-    {{ comment_form.as_p }}
-    {% csrf_token %}
+{{ comment_form.as_p }}
+{% csrf_token %}
 </form>
+
 {% endif %}
+
+{% if user.is_authenticated %}
 <a class="button-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
+{% endif %}
 {% endblock %}
