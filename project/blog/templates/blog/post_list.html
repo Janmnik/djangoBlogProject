@@ -10,7 +10,9 @@
 <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
 <p>{{ post.text|linebreaksbr }}</p>
 <p>published: {{ post.published_date }} by {{ post.author }}</p>
+<p class="tags">#Tagi: {{ post.tags.all|join:", " }}</p>
 <p>{{ post.}}</p>
+
 
 
 <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>

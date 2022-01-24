@@ -4,6 +4,10 @@ from django.utils import timezone
 from .models import Post, Comments
 from .forms import PostForm, CommentForm
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+from taggit.models import Tag
+
 def post_list(request):
     posts = Post.objects.order_by('-published_date')#.filter(id=1)
     return render(request, 'blog/post_list.html', {'posts': posts})
@@ -61,13 +65,15 @@ def comment_detail(request):
 
 
 def add_comment_to_post(request, pk):
-    post = get_object_or_404(Comments, pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        form = CommentForm(request.POST)
+        form = CommentForm(data=request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
+            #przypisanie komentarza do bieżącego posta
             comment.post = post
             comment.author = request.user
+            #zapisanie komentarza do bazy danych
             comment.save()
             return redirect('post_detail', pk=comment.post.pk)
     else:
@@ -88,5 +94,34 @@ def comment_edit(request, pk):
     else:
         form = CommentForm(instance=comment)
     return render(request, 'blog/comment_edit.html', {'form': form})
+
+#logowanie panel
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+    else:
+        return " invalid login "
+
+#wylogowanie
+def logout_view(request):
+    logout(request)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Create your views here.

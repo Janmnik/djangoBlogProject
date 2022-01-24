@@ -1,0 +1,11 @@
+<h1>Register account</h1>
+<form method="POST" action="{% url 'login' %}">
+    {% crsf_token %}
+    {{ form.as_p}}
+    <p>
+        <label></label>
+        <button type="submit" name="next" value="{{ next }}"></button>
+    </p>
+    <input type="hidden" name="next" value="{{ next }}">
+
+</form>

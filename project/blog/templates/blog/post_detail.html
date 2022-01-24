@@ -34,13 +34,14 @@
 <h2>Twój komentarz został dodany.</h2>
 {% else %}
 
-
+{% if comment %}
 <h2>Dodaj swój komentarz.</h2>
+{% else %}
 <form action="." method="post">
 {{ comment_form.as_p }}
 {% csrf_token %}
 </form>
-
+{% endif %}
 {% endif %}
 
 {% if user.is_authenticated %}
