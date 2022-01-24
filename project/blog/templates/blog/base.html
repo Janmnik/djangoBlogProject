@@ -16,8 +16,8 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'post_new' %}" >new post</a></li>
         {% endif %}
-        <li><a href="#zaloguj">zaloguj</a></li>
-        <li><a href="/Admin/logout">wyloguj</a></li>
+        <li><a href="{% url 'login' %}">zaloguj</a></li>
+        <li><a href="{% url 'logout' %}">wyloguj</a></li>
     </ul>
 </nav>
 <aside>
