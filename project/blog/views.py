@@ -17,6 +17,7 @@ def post_detail(request, pk):
     Post.objects.get(pk=pk)
     return render(request, 'blog/post_detail.html', {'post':post})
 #zapisanie formularza
+@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)

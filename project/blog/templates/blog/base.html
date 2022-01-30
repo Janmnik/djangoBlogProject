@@ -15,9 +15,15 @@
         <li><a href="/">Start</a></li>
         {% if user.is_authenticated %}
         <li><a href="{% url 'post_new' %}" >new post</a></li>
-        {% endif %}
+        {% else %}
         <li><a href="{% url 'login' %}">zaloguj</a></li>
-        <li><a href="{% url 'logout' %}">wyloguj</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'password_change' %}">zmień hasło</a></li>
+        <li>Witaj, {{ request.user }}!
+            <a href="{% url 'logout' %}">wyloguj</a></li>
+        {% endif %}
+        
     </ul>
 </nav>
 <aside>
