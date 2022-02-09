@@ -8,8 +8,9 @@ Stworzony blog django na zajęciach Nowoczesne Języki i Technelogie Programowan
 Projekt rozwijany dzięki dokumentacji django oraz kursu djangogirls.
 Szablon css został wybrany z poprzedniego projektu o Sławnych osobach.
   # Możliwości bloga:
-    -tworzenie nowych użytkowników
-    -logowanie
-    -możliwość dodawania i edycja postów
-    -możliwość dodawania i edycja komentarzy
-    -możliwośc dodawania tagów
+-tworzenie nowych użytkowników
+-logowanie
+-reset hasła
+-możliwość dodawania i edycja postów
+-możliwość dodawania i edycja komentarzy
+-możliwośc dodawania tagów
