@@ -4,7 +4,7 @@
 Jan Malec
 
 # Opis:
-Stworzony blog django na zajęciach Nowoczesne Języki i Technelogie Programowania.
+Stworzony blog django na zajęciach Nowoczesne Języki i Technologie Programowania.
 Projekt rozwijany dzięki dokumentacji django oraz kursu djangogirls.
 Szablon css został wybrany z poprzedniego projektu o Sławnych osobach.
   # Możliwości bloga:
